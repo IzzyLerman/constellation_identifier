@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang=“en”>
-  <head>
-    <title>Using templates in Flask</title>
-  </head>
-  <body>
-    <h1>Hiyee!</h1>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Upload an Image</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Upload!</button>
+</form>
+{% endblock %}

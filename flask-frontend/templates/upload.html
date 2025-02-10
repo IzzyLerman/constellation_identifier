@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Results</h2>
+<ul>
+{% for  cls in pred %}
+    <li>
+        {{ cls["Class"] }} predicted at {{ cls["x1"]}}, {{ cls["x2"]}}, {{ cls["y1"]}}, {{ cls["y2"]}}.
+    </li>
+{% endfor %}
+</ul>
+<img src="{{ url_for('static', filename = 'processed-imgs/'+filename) }}" alt="Constellation Prediction", width="640", height="640"/>
+{% endblock %}
