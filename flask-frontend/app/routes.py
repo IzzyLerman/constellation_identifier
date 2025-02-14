@@ -41,7 +41,7 @@ def upload():
     image_bytes = None
 
     for part in multipart_data.parts:
-        cd = part.headers.get(b'Content-Disposition', b'').decode()
+        cd = part.headers.get(b'Content-Disposition', b'').decode('utf-8')
         if 'result_dict' in cd:
             json_response = json.loads(part.text)
         elif 'result_img' in cd:

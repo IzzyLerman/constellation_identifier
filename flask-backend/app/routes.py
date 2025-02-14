@@ -17,7 +17,7 @@ def predict():
         file_path = os.path.join('saved-imgs/', filename)
         file.save(file_path)
         #return jsonify({'prediction': prediction})
-        model = YOLO('C:/constellation_identifier/runs/detect/trainyolo11m-1-17/weights/best.pt')
+        model = YOLO('C:/constellation_identifier/runs/detect/train15/weights/best.pt')
         results = model([file_path])
         results[0].save(f'processed-imgs/{filename}')
         classes = results[0].boxes.cls
