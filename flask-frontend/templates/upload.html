@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 
+{% block title %}Upload Image{% endblock %}
+
 {% block content %}
-<h2>Results</h2>
-<ul>
-{% for  cls in pred %}
-    <li>
-        {{ cls["Class"] }} predicted at {{ cls["x1"]}}, {{ cls["x2"]}}, {{ cls["y1"]}}, {{ cls["y2"]}}.
-    </li>
-{% endfor %}
-</ul>
-<img src="{{ url_for('static', filename = 'processed-imgs/'+filename) }}" alt="Constellation Prediction", width="640", height="640"/>
+<h2>Upload an Image</h2>
+<div id="image-container" class="placeholder">No Image Uploaded</div>
+
+<form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" id="file-input" name="image" accept="image/*" required>
+    <button type="submit">Upload!</button>
+</form>
+
+<script>
+    document.getElementById("upload-form").addEventListener("submit", function(event) {
+        event.preventDefault();  // Prevent page reload
+
+        let formData = new FormData(this);
+
+        fetch("/upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("image-container").innerHTML =
+                    `<img src="${data.image_url}" alt="Uploaded Image">`;
+            } else {
+                alert("Upload failed!");
+            }
+        })
+        .catch(error => console.error("Upload Error:", error));
+    });
+</script>
 {% endblock %}

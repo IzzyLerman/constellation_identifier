@@ -9,7 +9,6 @@ backend_port = 13520
 bp = Blueprint('main', __name__)
 
 def get_key(form_data):
-    # 'form-data; name="birth_date"', 'content': b'2012-123'
     key = form_data.split(";")[1].split("=")[1].replace('"', '')
 
     print(key)
@@ -17,7 +16,7 @@ def get_key(form_data):
     return key
 
 @bp.route('/')
-def main_menu():
+def index():
     return render_template('main.html')
 
 @bp.route('/upload', methods=['POST'])
@@ -45,7 +44,7 @@ def upload():
         if 'result_dict' in cd:
             json_response = json.loads(part.text)
         elif 'result_img' in cd:
-            image_bytes = part.content  # binary image data
+            image_bytes = part.content
 
     with open('static/processed-imgs/output_image.png', 'wb') as file:
         file.write(image_bytes)

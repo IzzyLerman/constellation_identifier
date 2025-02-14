@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask
 import os
 from dotenv import load_dotenv
 from app.routes import setup_routes
 
 def create_app():
     app = Flask(__name__)
-    setup_routes(app)
+    setup_routes(app)  # Register routes
     return app
 
 if __name__ == "__main__":
