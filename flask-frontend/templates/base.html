@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
+    <title>Constellation Predictor</title>
+    <link rel=”stylesheet” href=”static/styles.css”>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Flask App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-
-    <header>
-        <h1>Flask Image Upload</h1>
-        <nav>
-            <a href="{{ url_for('main.index') }}">Home</a>
-        </nav>
+  </head>
+  <body>
+    <header class=”header”>
+      <h1>Content</h1>
     </header>
-
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        <p>© 2025 Flask App</p>
+    
+    <div class=”content”>
+      {% block content %}
+      {% endblock %}
+    </div>
+   
+    <footer class=”footer”>
     </footer>
-
-</body>
+  </body>
 </html>

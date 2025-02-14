@@ -2,39 +2,8 @@
 
 {% block content %}
 <h2>Upload an Image</h2>
-
-<form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" id="file-input" name="image" accept="image/*" required>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
     <button type="submit">Upload!</button>
 </form>
-<br>
-<br>
-
-<!-- I added image placeholder for the unprocessed and processed images -->
-<div style="display: flex; gap: 20px; align-items: center;">
-    <div id="image-container" class="placeholder">No Image Uploaded</div>
-    <div id="image-container-2" class="placeholder">No Image Uploaded</div>
-</div>
-
-<script>
-    document.getElementById("upload-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        let formData = new FormData(this);
-
-        fetch("{{ url_for('main.upload') }}", {  
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById("image-container").innerHTML =
-                    `<img src="${data.image_url}" alt="Uploaded Image" width="300" height="200">`;
-            } else { 
-                alert("Upload failed!");
-            }
-        })
-        .catch(error => console.error("Upload Error:", error));
-    });
-</script>
 {% endblock %}
