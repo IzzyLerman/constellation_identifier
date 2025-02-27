@@ -9,5 +9,11 @@
     </li>
 {% endfor %}
 </ul>
-<img src="{{ url_for('static', filename = 'processed-imgs/'+filename) }}" alt="Constellation Prediction", width="640", height="640"/>
+<img id="outputImage" src="{{ url_for('static', filename = 'processed-imgs/'+filename) }}" alt="Constellation Prediction", width="640", height="640"/>
+
+<script>
+    window.addEventListener("load", () => {
+        document.querySelector(".loader").classList.add("loader--hidden");
+    });
+</script>
 {% endblock %}

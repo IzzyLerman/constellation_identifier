@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
+  <script>
+    window.addEventListener("load", () => {
+      document.querySelector(".loader").classList.add("loader--hidden");
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const loader = document.querySelector(".loader");
+
+        if (form) {
+            form.addEventListener("submit", function () {
+                loader.classList.remove("loader-hidden");
+            });
+        }
+    });
+  </script>
   <head>
     <title>Constellation Predictor</title>
-    <link rel=”stylesheet” href=”static/styles.css”>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    <!-- main loader container-->
+    <div class = "loader loader-hidden"></div>
     <header class=”header”>
       <h1>Content</h1>
     </header>
