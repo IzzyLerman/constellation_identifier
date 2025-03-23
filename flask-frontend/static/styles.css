@@ -30,3 +30,20 @@
     opacity: 0;
     visibility: hidden;
 }
+
+body {
+    background-color: #060657;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+p, h2 {
+    color: white;
+}
+
+.welcome-content{
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 from flask import Flask
 from app.routes import setup_routes
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 def create_app():
     app = Flask(__name__)
@@ -9,7 +9,7 @@ def create_app():
     return app
 
 if __name__ == "__main__":
-    load_dotenv()
+    #load_dotenv()
     app = create_app()
-    port = int(os.getenv("PORT", 5000))
+    port = int(os.getenv("PORT", 13520))
     app.run(debug=True, port=port)

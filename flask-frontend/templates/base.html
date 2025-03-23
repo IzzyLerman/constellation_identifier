@@ -21,12 +21,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icon/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/favicon.ico') }}">
+
+
   </head>
   <body>
     <!-- main loader container-->
     <div class = "loader loader-hidden"></div>
     <header class=”header”>
-      <h1>Content</h1>
+      <div class="welcome-content">
+        <h1>Welcome to the Constellation Identifier WebSite!</h1>
+        <p>Submit an image/photo of the constellation to find out what it is amd know more about stars.</p>
+      </div>
     </header>
     
     <div class=”content”>
